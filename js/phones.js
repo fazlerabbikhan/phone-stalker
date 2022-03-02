@@ -1,4 +1,4 @@
-// search phones
+// --search phones--
 
 const searchFood = () => {
     const searchField = document.getElementById('search-field');
@@ -8,7 +8,7 @@ const searchFood = () => {
     searchField.value = '';
 
     if (searchText.length == 0) {
-        // error
+        // error msg
         const errorMsg = document.getElementById('errorMsg');
         errorMsg.innerText = 'Please search by a name.';
         // clear
@@ -27,7 +27,7 @@ const searchFood = () => {
     }
 }
 
-// search results
+// --search results--
 
 const displaySearchResult = data => {
     // clear
@@ -37,13 +37,12 @@ const displaySearchResult = data => {
     phoneDetails.innerHTML = '';
 
     if (data.length == 0) {
-        // error
+        // error msg
         errorMsg.innerText = 'Please search by a valid name.';
     }
     else {
         data.forEach(phone => {
             console.log(phone);
-
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -71,7 +70,7 @@ const loadPhoneDetails = phoneId => {
         .then(phone => displayPhoneDetails(phone.data));
 }
 
-// phone details
+// --phone details--
 
 const displayPhoneDetails = details => {
     console.log(details);
