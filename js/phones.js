@@ -1,39 +1,49 @@
+// search phones
+
 const searchFood = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     console.log(searchText);
+    // clear
     searchField.value = '';
 
     if (searchText.length == 0) {
+        // error
         const errorMsg = document.getElementById('errorMsg');
-        errorMsg.innerText = 'Please search by a name.'
+        errorMsg.innerText = 'Please search by a name.';
+        // clear
         const searchResult = document.getElementById('search-result');
         searchResult.innerHTML = '';
         const phoneDetails = document.getElementById('phone-details');
         phoneDetails.innerHTML = '';
     }
     else {
-        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
         fetch(url)
             .then(res => res.json())
             .then(phones => displaySearchResult(phones.data.slice(0, 20)));
+        // clear
         errorMsg.innerText = '';
     }
 }
 
 // search results
+
 const displaySearchResult = data => {
+    // clear
     const searchResult = document.getElementById('search-result');
     searchResult.innerHTML = '';
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.innerHTML = '';
 
     if (data.length == 0) {
-        errorMsg.innerText = 'Please search by a valid name.'
+        // error
+        errorMsg.innerText = 'Please search by a valid name.';
     }
     else {
         data.forEach(phone => {
             console.log(phone);
+
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -62,10 +72,13 @@ const loadPhoneDetails = phoneId => {
 }
 
 // phone details
+
 const displayPhoneDetails = details => {
     console.log(details);
+    // clear
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.innerHTML = '';
+
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML = `
