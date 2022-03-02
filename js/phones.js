@@ -58,22 +58,22 @@ const displayPhoneDetails = details => {
                     <h5 class="card-title">${details.name}</h5>
                     <h6 class="card-title">Manufactured by ${details.brand}</h6>
                     <h6 class="card-title">Main Features:</h6>
-                    <p class="card-text">Chipset: ${details.mainFeatures.chipSet}</p>
-                    <p class="card-text">Display Size: ${details.mainFeatures.displaySize}</p>
-                    <p class="card-text">Memory: ${details.mainFeatures.memory}</p>
-                    <p class="card-text">Storage: ${details.mainFeatures.storage}</p>
+                    <p class="card-text">Chipset: ${details?.mainFeatures?.chipSet}</p>
+                    <p class="card-text">Display Size: ${details?.mainFeatures?.displaySize}</p>
+                    <p class="card-text">Memory: ${details?.mainFeatures?.memory}</p>
+                    <p class="card-text">Storage: ${details?.mainFeatures?.storage}</p>
                     <h6 class="card-title">Sensors:</h6>
-                    <p class="card-text">${details.mainFeatures.sensors}</p>
+                    <p class="card-text">${details?.mainFeatures?.sensors}</p>
                     <h6 class="card-title">Others:</h6>
-                    <p class="card-text">Bluetooth: ${details.others.Bluetooth}</p>
-                    <p class="card-text">GPS: ${details.others.GPS}</p>
-                    <p class="card-text">NFC: ${details.others.NFC}</p>
-                    <p class="card-text">Radio: ${details.others.Radio}</p>
-                    <p class="card-text">USB: ${details.others.USB}</p>
-                    <p class="card-text">WLAN: ${details.others.WLAN}</p>
+                    <p class="card-text">Bluetooth: ${details?.others?.WLAN ? details.others.Bluetooth : 'Not found'}</p>
+                    <p class="card-text">GPS: ${details?.others?.WLAN ? details.others.GPS : 'Not found'}</p>
+                    <p class="card-text">NFC: ${details?.others?.WLAN ? details.others.NFC : 'Not found'}</p>
+                    <p class="card-text">Radio: ${details?.others?.WLAN ? details.others.Radio : 'Not found'}</p>
+                    <p class="card-text">USB: ${details?.others?.WLAN ? details.others.USB : 'Not found'}</p>
+                    <p class="card-text">WLAN: ${details?.others?.WLAN ? details.others.WLAN : 'Not found'}</p>
                     <h6 class="card-title">Release Date:</h6>
-                    <p class="card-text">${details.releaseDate}</p>
-            </div>
+                    <p class="card-text">${details?.releaseDate ? details.releaseDate : 'No release date found'}</p>
+            </div >
     `;
     phoneDetails.appendChild(div);
 }
