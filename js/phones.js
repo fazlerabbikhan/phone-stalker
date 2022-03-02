@@ -27,7 +27,7 @@ const displaySearchResult = data => {
             <div class="card-body">
                 <h5 class="card-title">${phone.phone_name}</h5>
                 <h6 class="card-title">Manufactured by ${phone.brand}</h6>
-                <p class="card-text">To know additional information, please click on details.</p>
+                <p class="card-text">To know more, please click on details.</p>
             </div>
             <div onclick="loadPhoneDetails('${phone.slug}')" class="pb-2 d-flex justify-content-center">
                 <a class="fw-bold btn btn-outline-primary" role="button">Details</a>
@@ -56,6 +56,12 @@ const displayPhoneDetails = details => {
             <img src="${details.image}" class="card-img-top" alt="...">
             <div class="card-body">
                     <h5 class="card-title">${details.name}</h5>
+                    <h6 class="card-title">Manufactured by ${details.brand}</h6>
+                    <h6 class="card-title">Main Features:</h6>
+                    <p class="card-text">Chipset: ${details.mainFeatures.chipSet}</p>
+                    <p class="card-text">Display Size: ${details.mainFeatures.displaySize}</p>
+                    <p class="card-text">Memory: ${details.mainFeatures.memory}</p>
+                    <p class="card-text">Storage: ${details.mainFeatures.storage}</p>
                     <h6 class="card-title">Sensors:</h6>
                     <p class="card-text">${details.mainFeatures.sensors}</p>
                     <h6 class="card-title">Others:</h6>
@@ -65,7 +71,8 @@ const displayPhoneDetails = details => {
                     <p class="card-text">Radio: ${details.others.Radio}</p>
                     <p class="card-text">USB: ${details.others.USB}</p>
                     <p class="card-text">WLAN: ${details.others.WLAN}</p>
-                    <p class="card-text">Release Date: ${details.releaseDate}</p>
+                    <h6 class="card-title">Release Date:</h6>
+                    <p class="card-text">${details.releaseDate}</p>
             </div>
     `;
     phoneDetails.appendChild(div);
