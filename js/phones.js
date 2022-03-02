@@ -1,22 +1,24 @@
 const searchFood = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    console.log(searchText);
-
+    // console.log(searchText);
     searchField.value = '';
 
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
-
     fetch(url)
         .then(res => res.json())
         .then(phones => displaySearchResult(phones.data));
 }
 
+// search results
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+    const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.textContent = '';
+
     data.forEach(phone => {
-        console.log(phone);
+        // console.log(phone);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -41,20 +43,23 @@ const loadPhoneDetails = phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
     fetch(url)
         .then(res => res.json())
-        .then(mobile => displayPhoneDetails(mobile.data));
+        .then(phone => displayPhoneDetails(phone.data));
 }
 
+// phone details
 const displayPhoneDetails = details => {
     console.log(details);
     const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.textContent = '';
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML = `
             <img src="${details.image}" class="card-img-top" alt="...">
             <div class="card-body">
                     <h5 class="card-title">${details.name}</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+                    <p class="card-text">Sensors: ${details.mainFeatures.sensors}</p>
+                    <p class="card-text">Others: ${details.others}</p>
+                    <p class="card-text">${details.releaseDate}</p>
             </div>
     `;
     phoneDetails.appendChild(div);
